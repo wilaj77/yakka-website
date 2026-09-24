@@ -1,0 +1,329 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Whispager — Private, encrypted staff paging for medical &amp; dental practices</title>
+<style>
+  :root {
+    --navy: #14213d;
+    --navy-deep: #0d1730;
+    --mint: #2ee6c5;
+    --mint-dark: #17b89c;
+    --ink: #1c2430;
+    --muted: #5b6472;
+    --bg: #f7f9fb;
+    --card: #ffffff;
+    --border: #e3e8ee;
+  }
+  * { box-sizing: border-box; }
+  body {
+    margin: 0;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif;
+    background: var(--bg);
+    color: var(--ink);
+    line-height: 1.6;
+  }
+  .hero {
+    background: linear-gradient(180deg, var(--navy) 0%, var(--navy-deep) 100%);
+    color: #fff;
+    padding: 3.5rem 1.5rem 3rem;
+  }
+  .hero-inner {
+    max-width: 760px;
+    margin: 0 auto;
+    text-align: center;
+  }
+  .brand {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.6rem;
+    margin-bottom: 1.75rem;
+  }
+  .brand svg { width: 40px; height: 40px; }
+  .brand .wordmark {
+    font-size: 1.6rem;
+    font-weight: 700;
+    letter-spacing: -0.01em;
+  }
+  .brand .wordmark .light { font-weight: 400; opacity: 0.85; }
+  .brand .wordmark .tld { font-weight: 400; color: var(--mint); }
+  h1 {
+    font-size: 2.1rem;
+    line-height: 1.25;
+    margin: 0 0 0.9rem;
+    letter-spacing: -0.01em;
+  }
+  .hero p.sub {
+    font-size: 1.1rem;
+    color: #c9d3e0;
+    max-width: 560px;
+    margin: 0 auto;
+  }
+  main {
+    max-width: 760px;
+    margin: 0 auto;
+    padding: 2.5rem 1.5rem 3rem;
+  }
+  section { margin-bottom: 2.25rem; }
+  h2 {
+    font-size: 1.3rem;
+    margin: 0 0 1rem;
+    letter-spacing: -0.01em;
+  }
+  .lede {
+    color: var(--muted);
+    font-size: 1.02rem;
+    max-width: 620px;
+  }
+  .features {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1rem;
+    margin-top: 1.25rem;
+  }
+  @media (max-width: 560px) {
+    .features { grid-template-columns: 1fr; }
+  }
+  .feature {
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    padding: 1.25rem 1.4rem;
+  }
+  .feature .icon {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 34px;
+    height: 34px;
+    border-radius: 8px;
+    background: rgba(46, 230, 197, 0.14);
+    color: var(--mint-dark);
+    margin-bottom: 0.6rem;
+    font-size: 1.05rem;
+  }
+  .feature h3 {
+    font-size: 1rem;
+    margin: 0 0 0.4rem;
+  }
+  .feature p {
+    margin: 0;
+    color: var(--muted);
+    font-size: 0.92rem;
+  }
+  .note {
+    background: #fbfaf4;
+    border: 1px solid #ece6cf;
+    border-radius: 10px;
+    padding: 1.1rem 1.4rem;
+    font-size: 0.9rem;
+    color: #6b5e33;
+  }
+  .contrast {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1rem;
+    margin-top: 1.25rem;
+  }
+  @media (max-width: 560px) {
+    .contrast { grid-template-columns: 1fr; }
+  }
+  .contrast > div {
+    border-radius: 10px;
+    padding: 1.25rem 1.4rem;
+    border: 1px solid var(--border);
+  }
+  .contrast .not-us {
+    background: #fafafa;
+  }
+  .contrast .not-us h3 {
+    color: var(--muted);
+  }
+  .contrast .is-us {
+    background: rgba(46, 230, 197, 0.08);
+    border-color: rgba(23, 184, 156, 0.35);
+  }
+  .contrast .is-us h3 {
+    color: var(--mint-dark);
+  }
+  .contrast h3 {
+    font-size: 0.95rem;
+    margin: 0 0 0.6rem;
+    text-transform: uppercase;
+    letter-spacing: 0.03em;
+  }
+  .contrast p {
+    margin: 0;
+    color: var(--ink);
+    font-size: 0.92rem;
+  }
+  .cta {
+    background: var(--navy);
+    color: #fff;
+    border-radius: 12px;
+    padding: 2rem 1.75rem;
+    text-align: center;
+  }
+  .cta h2 { color: #fff; }
+  .cta p { color: #c9d3e0; margin: 0 0 1.25rem; }
+  .cta a.button {
+    display: inline-block;
+    background: var(--mint);
+    color: var(--navy-deep);
+    font-weight: 700;
+    text-decoration: none;
+    padding: 0.85rem 1.75rem;
+    border-radius: 8px;
+    font-size: 1rem;
+  }
+  .cta a.button:hover { background: var(--mint-dark); }
+  footer {
+    max-width: 760px;
+    margin: 0 auto;
+    padding: 1.5rem;
+    color: var(--muted);
+    font-size: 0.85rem;
+    border-top: 1px solid var(--border);
+  }
+  footer a { color: var(--muted); }
+</style>
+</head>
+<body>
+  <div class="hero">
+    <div class="hero-inner">
+      <div class="brand">
+        <svg viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path d="M24 3 L43 10 V22 C43 33 35.5 41 24 45 C12.5 41 5 33 5 22 V10 Z"
+                stroke="#2ee6c5" stroke-width="2.5" fill="rgba(46,230,197,0.08)"/>
+          <path d="M12 25 H18 L21 18 L26 32 L29 22 L32 25 H37"
+                stroke="#2ee6c5" stroke-width="2.4" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+        <span class="wordmark"><span>Secure</span><span class="light">Pager</span><span class="tld">.app</span></span>
+      </div>
+      <h1>Private, hands-free staff paging — built for the pace of a clinical office.</h1>
+      <p class="sub">
+        Encrypted messaging between the front desk, clinical staff, and shared
+        workstations, with hands-free acknowledgment on Apple Watch and iPhone.
+        A modern replacement for walkie-talkie chatter, purpose-built for
+        medical and dental practices.
+      </p>
+    </div>
+  </div>
+
+  <main>
+    <section>
+      <h2>Why walkie-talkies and group texts fall short</h2>
+      <p class="lede">
+        Walkie-talkie chatter is heard by everyone in the room, whether or not the
+        message is meant for them. Group texts have no concept of who's actually
+        with a patient right now, no acknowledgment, and nothing stopping a
+        message from landing at the worst possible moment. Neither one was built
+        for a clinical office's pace — or its privacy requirements.
+      </p>
+    </section>
+
+    <section>
+      <h2>What Whispager actually does</h2>
+      <div class="features">
+        <div class="feature">
+          <div class="icon">&#128274;</div>
+          <h3>End-to-end encrypted</h3>
+          <p>Messages are sealed on the sending device before they ever leave it.
+             The broker and any relay only ever handle ciphertext — never the
+             message itself.</p>
+        </div>
+        <div class="feature">
+          <div class="icon">&#127911;</div>
+          <h3>Private audio, never the speaker</h3>
+          <p>Announcements only ever play through a headset or earbuds a staff
+             member has personally approved — never the phone or Watch's built-in
+             speaker, no exceptions.</p>
+        </div>
+        <div class="feature">
+          <div class="icon">&#9995;</div>
+          <h3>Hands-free acknowledgment</h3>
+          <p>Respond to a message with a quick spoken phrase via Siri — no
+             gloves off, no phone out of a pocket.</p>
+        </div>
+        <div class="feature">
+          <div class="icon">&#128683;</div>
+          <h3>Do Not Disturb is honored, not overridden</h3>
+          <p>A staff member marked unavailable simply isn't sent to — enforced
+             on the server, not just hidden in the app. No message is ever
+             forced through.</p>
+        </div>
+        <div class="feature">
+          <div class="icon">&#128188;</div>
+          <h3>Runs on your own network</h3>
+          <p>A self-hosted broker on office-owned hardware. Messages between
+             devices on-site never have to touch the public internet.</p>
+        </div>
+        <div class="feature">
+          <div class="icon">&#128421;</div>
+          <h3>iPhone, Watch, and front-desk PC</h3>
+          <p>The same encrypted network reaches shared front-desk and operatory
+             workstations, not just personal devices.</p>
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <h2>Built for coordination, not for waking someone at 2am</h2>
+      <p class="lede">
+        Some healthcare messaging tools exist to override silence — an on-call
+        physician who has to be reached for a true emergency, no matter what.
+        That's a real and different problem, and it calls for an alert that
+        forces its way through Do Not Disturb until someone acknowledges it.
+      </p>
+      <p class="lede">
+        Whispager is built for a more everyday problem: keeping a
+        practice's front desk, hygienists, and assistants coordinated during
+        the workday. "The patient in room 3 is ready" isn't a life-or-death
+        page — and treating it like one, forcing it through no matter what
+        someone's doing, just teaches staff to tune every alert out. So here,
+        Do Not Disturb means Do Not Disturb: a message to someone unavailable
+        is never forced through, and the sender is told right away so they
+        can reach someone else instead.
+      </p>
+      <div class="contrast">
+        <div class="not-us">
+          <h3>Not what we are</h3>
+          <p>An on-call escalation or emergency-paging system that overrides
+             silence for true clinical emergencies.</p>
+        </div>
+        <div class="is-us">
+          <h3>What we are</h3>
+          <p>A private, hands-free way to keep a practice's staff coordinated
+             during the day, with Do Not Disturb enforced, not overridden.</p>
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <h2>On privacy &amp; compliance</h2>
+      <p class="note">
+        Whispager is built with HIPAA's technical safeguards in mind —
+        end-to-end encryption, minimal message retention, and server-side
+        access controls. It is not itself a substitute for your practice's own
+        HIPAA compliance program, and we're not yet claiming formal compliance
+        certification. Ask us for specifics before relying on this for PHI.
+      </p>
+    </section>
+
+    <section class="cta">
+      <h2>Launching soon</h2>
+      <p>We're piloting with a small number of practices before a wider release.
+         Reach out if you'd like early access.</p>
+      <a class="button" href="mailto:support@yakkagroup.com?subject=Whispager%20early%20access">
+        Request early access
+      </a>
+    </section>
+  </main>
+
+  <footer>
+    &copy; 2026 Yakka LLC. Whispager is a product of Yakka Group. &middot;
+    <a href="mailto:support@yakkagroup.com">support@yakkagroup.com</a>
+  </footer>
+</body>
+</html>
