@@ -199,7 +199,7 @@
           <path d="M12 25 H18 L21 18 L26 32 L29 22 L32 25 H37"
                 stroke="#2ee6c5" stroke-width="2.4" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
         </svg>
-        <span class="wordmark"><span>Secure</span><span class="light">Pager</span><span class="tld">.app</span></span>
+        <span class="wordmark"><span>Whis</span><span class="light">pager</span></span>
       </div>
       <h1>Private, hands-free staff paging — built for the pace of a clinical office.</h1>
       <p class="sub">
@@ -256,8 +256,21 @@
         <div class="feature">
           <div class="icon">&#128188;</div>
           <h3>Runs on your own network</h3>
-          <p>A self-hosted broker on office-owned hardware. Messages between
-             devices on-site never have to touch the public internet.</p>
+          <!--
+            Was "messages between devices on-site never have to touch the public internet",
+            which is true of workstations and of a phone that is awake, and not true of the
+            case this product is actually for - a phone in a pocket with the screen off.
+            iOS grants no app a LAN-only background wake, so that notification goes out
+            through Apple's push service like every other app's. Confirmed by asking
+            directly rather than assumed; see the APNs decision in the handoff.
+
+            Corrected before publishing rather than after being asked. A privacy claim a
+            practice's compliance officer can disprove is worse than no claim.
+          -->
+          <p>A self-hosted broker on office-owned hardware — no cloud account holding your
+             practice's messages. Between devices on-site, traffic stays on your network.
+             Alerting a phone whose screen is locked uses Apple's notification service, as
+             every iPhone app must — and it still only ever carries ciphertext.</p>
         </div>
         <div class="feature">
           <div class="icon">&#128421;</div>
