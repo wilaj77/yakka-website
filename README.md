@@ -6,7 +6,7 @@ styles inline, so there is nothing to install and nothing that can break a deplo
 | Folder | Domain | Purpose |
 |---|---|---|
 | `yakkagroup/` | yakkagroup.com | Company page. **Apple requires this** for Developer Program Organization enrollment and rejects parked or placeholder pages. |
-| `whispager/` | whispager.com | Whispager product page. |
+| `whispager/` | whispager.com | WhisPager product page. |
 
 ## Why this is a separate repository
 
